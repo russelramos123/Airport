@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QAModelStoreContainer" CdmEntityContainer="QAEntities">
+    <FunctionImportMapping FunctionImportName="Table1_GetTransactions" FunctionName="QAModel.Store.Table1_GetTransactions">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QAModel.Table1_GetTransactions_Result">
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="product" ColumnName="product" />
+          <ScalarProperty Name="terminal" ColumnName="terminal" />
+          <ScalarProperty Name="COUNT" ColumnName="COUNT" />
+          <ScalarProperty Name="total" ColumnName="total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Table1_ListCategory" FunctionName="QAModel.Store.Table1_ListCategory" />
+  </EntityContainerMapping>
+</Mapping>

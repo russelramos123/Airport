@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="QAEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="Table1_GetTransactions" ReturnType="Collection(QAModel.Table1_GetTransactions_Result)">
+      <Parameter Name="dateFrom" Mode="In" Type="DateTime" />
+      <Parameter Name="dataTo" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Table1_ListCategory" ReturnType="Collection(String)" />
+  </EntityContainer>
+  <ComplexType Name="Table1_GetTransactions_Result">
+    <Property Type="String" Name="category" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="product" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="terminal" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="COUNT" Nullable="true" />
+    <Property Type="Decimal" Name="total" Nullable="true" Precision="19" />
+  </ComplexType>
+</Schema>

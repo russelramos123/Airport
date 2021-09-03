@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="Table1_GetTransactions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dateFrom" Type="datetime" Mode="In" />
+          <Parameter Name="dataTo" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Table1_ListCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="QAModelStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="QAEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="Table1_GetTransactions" ReturnType="Collection(QAModel.Table1_GetTransactions_Result)">
+            <Parameter Name="dateFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="dataTo" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Table1_ListCategory" ReturnType="Collection(String)" />
+        </EntityContainer>
+        <ComplexType Name="Table1_GetTransactions_Result">
+          <Property Type="String" Name="category" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="product" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="terminal" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="COUNT" Nullable="true" />
+          <Property Type="Decimal" Name="total" Nullable="true" Precision="19" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QAModelStoreContainer" CdmEntityContainer="QAEntities" >
+          <FunctionImportMapping FunctionImportName="Table1_GetTransactions" FunctionName="QAModel.Store.Table1_GetTransactions">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QAModel.Table1_GetTransactions_Result">
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="product" ColumnName="product" />
+                <ScalarProperty Name="terminal" ColumnName="terminal" />
+                <ScalarProperty Name="COUNT" ColumnName="COUNT" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Table1_ListCategory" FunctionName="QAModel.Store.Table1_ListCategory" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
